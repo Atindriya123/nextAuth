@@ -3,42 +3,32 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
-        required: true,
-        unique: [true,"Plese provide username"]
-
+        required: [true, "Please provide a username"],
+        unique: true,
     },
     email: {
         type: String,
-        required: true,
-        unique: [true,"Plese provide email"]
-
+        required: [true, "Please provide a email"],
+        unique: true,
     },
     password: {
         type: String,
-        required: true,
-        unique: [true,"Plese provide password"]
-
+        required: [true, "Please provide a password"],
     },
-    isVeryfied:{
-        type: Boolian,
+    isVerfied: {
+        type: Boolean,
         default: false,
     },
-    isAdmin:{
-        type: Boolian,
-        default: false,
-    },
-    isVeryfiedToken:{
-        type: Boolian,
+    isAdmin: {
+        type: Boolean,
         default: false,
     },
     forgotPasswordToken: String,
-    forgotPasswordTokenExpairy: Date,
+    forgotPasswordTokenExpiry: Date,
     verifyToken: String,
-    verifyTokenExpairy: Date,
+    verifyTokenExpiry: Date,
 })
-   
 
-const User = mongoose.model("users",userSchema);
+const User = mongoose.models.users || mongoose.model("users", userSchema);
 
-
- export default User;
+export default User;
