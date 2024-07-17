@@ -6,18 +6,19 @@ import { NextRequest, NextResponse } from "next/server";
 
 connect()
 
-export async function POST(request) {
+export async function GET(request) {
     try {
         
-   const response =NextResponse.json({
+   const response = NextResponse.json({
        message: "Loged out successfully",
        sucess: true
 
     })
-
+console.log(response);
     response.cookies.set('token','',{
         httpOnly: true,
-        expires: new Date(0)
+        expires: new Date(0),
+        path:"/"
     },)
 
    return response
